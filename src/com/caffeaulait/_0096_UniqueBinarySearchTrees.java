@@ -1,6 +1,6 @@
 package com.caffeaulait;
 
-public class _0096__UniqueBinarySearchTrees {
+public class _0096_UniqueBinarySearchTrees {
     /**
      * #96
      * Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?

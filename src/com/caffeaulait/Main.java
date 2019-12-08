@@ -1,5 +1,7 @@
 package com.caffeaulait;
 
+import java.util.*;
+
 public class Main {
 
 
@@ -19,6 +21,19 @@ public class Main {
 //    public static int partition(int[] arr, int left, int right){
 //
 //    }
+
+    public static void insertion_sort(int[] arr){
+        int n = arr.length;
+        for(int i = 1;i < n;i++){
+            int temp = arr[i];
+            int j = i-1;
+            while (j>=0 && arr[j]>temp){
+                arr[j+1] = arr[j];
+                j--;
+            }
+            arr[j+1] = temp;
+        }
+    }
 
     public static void merge(int[] A, int[] L, int[] R){
         int leftCount = L.length;
@@ -93,6 +108,7 @@ public class Main {
         int[] arr1 = {3,6,7,1,2,9,5,10,4,8};
         int[] arr2 = {3,6,7,1,2,9,5,10,4,8};
         int[] arr3 = {3,6,7,1,2,9,5,10,4,8};
+        int[] arr4 = {3,6,7,1,2,9,5,10,4,8};
         System.out.println("Bubble sort: ");
         bubble_sort(arr1);
         for (int i : arr1){
@@ -107,10 +123,15 @@ public class Main {
 
         System.out.println("\nmerge sort: ");
         merge_sort(arr3);
-        for (int i : arr3){
-            System.out.print(i+" ");
+        for (int i : arr3) {
+            System.out.print(i + " ");
         }
 
+        System.out.println("\ninsertion sort: ");
+        insertion_sort(arr4);
+        for(int i : arr4){
+            System.out.print(i+" ");
+        }
 
     }
 }

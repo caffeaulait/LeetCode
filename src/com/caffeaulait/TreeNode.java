@@ -1,0 +1,12 @@
+package com.caffeaulait;
+
+
+public class TreeNode {
+    /**
+     * binary tree
+     */
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x){val = x;}
+}
