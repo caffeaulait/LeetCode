@@ -1,5 +1,6 @@
 package com.caffeaulait;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -103,6 +104,62 @@ public class Main {
         quick_sort(arr,p+1,right);
     }
 
+    public static List<Integer> merge(List<Integer> list1, List<Integer> list2){
+        int n1 = list1.size();
+        int n2 = list2.size();
+        List<Integer> result = new ArrayList<>();
+        int i =0, j=0;
+        while (i<n1 && j<n2){
+            if (list1.get(i)<list2.get(j)) {
+                result.add(list1.get(i));
+                i++;
+            }else {
+                result.add(list2.get(j));
+                j++;
+            }
+        }
+        while (i<n1){
+            result.add(list1.get(i++));
+        }
+        while (j<n2){
+            result.add(list2.get(j++));
+        }
+        return result;
+    }
+
+    public static List<Integer> mergeKArrays(List<List<Integer>> lists){
+        if (lists.size()==0 || lists.get(0).size()==0)
+            return new ArrayList<>();
+
+        PriorityQueue<List<Integer>> queue = new PriorityQueue<>(new Comparator<List<Integer>>() {
+            @Override
+            public int compare(List<Integer> o1, List<Integer> o2) {
+                if (o1.get(0)<o2.get(0)){
+                    return -1;
+                }else if (o1.get(0) == o2.get(0)){
+                    return 0;
+                }else{
+                    return 1;
+                }
+            }
+        });
+
+        for (List<Integer> list : lists){
+            queue.offer(list);
+        }
+
+        List<Integer> result = new ArrayList<>();
+
+        while (!queue.isEmpty()){
+            List<Integer> minList = queue.poll();
+            result.add(minList.remove(0));
+            if (minList.size()!=0)
+                queue.offer(minList);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
 	// write your code here
         int[] arr1 = {3,6,7,1,2,9,5,10,4,8};
@@ -132,6 +189,35 @@ public class Main {
         for(int i : arr4){
             System.out.print(i+" ");
         }
+
+        System.out.println();
+
+        int[] k1 = {1,3,5,7,9};
+        int[] k2 = {2,4,6,8,10};
+        int[] k3 = {11,12,13,14,15};
+
+        List<Integer> list1= new ArrayList<>();
+        List<Integer> list2= new ArrayList<>();
+        List<Integer> list3= new ArrayList<>();
+
+        for (int i = 0; i <k1.length;i++){
+            list1.add(k1[i]);
+            list2.add(k2[i]);
+            list3.add(k3[i]);
+        }
+
+        List<List<Integer>> lists = new ArrayList<>();
+        lists.add(list1);
+        lists.add(list2);
+        lists.add(list3);
+
+
+        List<Integer> result = mergeKArrays(lists);
+
+        for (int i : result){
+            System.out.print(i+" ");
+        }
+
 
     }
 }
