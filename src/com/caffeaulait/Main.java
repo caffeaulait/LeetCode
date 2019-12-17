@@ -78,7 +78,7 @@ public class Main {
             while (i <= right && arr[i] < pivot){
                 i++;
             }
-            while (j <= right && arr[j] > pivot){
+            while (j >= left && arr[j] > pivot){
                 j--;
             }
             //if not crossed, exchange
@@ -220,4 +220,5 @@ public class Main {
 
 
     }
+
 }
