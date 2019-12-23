@@ -28,12 +28,6 @@ public class _0095_UniqueBinarySearchTreesII {
      *     /     /       \                 \
      *    2     1         2                 3
      */
-    class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {val = x;}
-    }
 
     public List<TreeNode> generateTrees(int n) {
         if (n==0) return new ArrayList<TreeNode>();

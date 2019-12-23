@@ -21,13 +21,6 @@ public class _0094_BinaryTreeInorderTraversal {
      Output: [1,3,2]
      Follow up: Recursive solution is trivial, could you do it iteratively?
      */
-    class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {val = x;}
-    }
-
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> nodes = new ArrayList<>();
         inorder(root,nodes);
