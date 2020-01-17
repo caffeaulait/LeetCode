@@ -7,15 +7,15 @@ public class nowcoder_45 {
      * 连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1
      */
     public int FindGreatestSumOfSubArray(int[] array) {
-        //array[i]结尾的连续数组最大值
-        int max = array[0];
-        //记录当前所有子数组的和的最大值
-        int res = array[0];
-        for (int i = 1; i<array.length; i++){
-
-            max = Math.max(max+array[i],array[i]);
-            res = Math.max(res,max);
+        if (array == null || array.length == 0)
+            return 0;
+        int greatestSum = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int val : array){
+            //如果和为负，抛弃前面的，从当前的值开始算
+            sum = sum<=0? val: sum + val;
+            greatestSum = Math.max(greatestSum,sum);
         }
-        return res;
+        return greatestSum;
     }
 }
