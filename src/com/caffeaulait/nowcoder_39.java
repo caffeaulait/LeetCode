@@ -25,7 +25,7 @@ public class nowcoder_39 {
                 queue.offer(node.right);
             if (start == end){
                 result.add(list);
-                list.clear();
+                list = new ArrayList<>();
                 start = 0;
                 end = queue.size();
             }
