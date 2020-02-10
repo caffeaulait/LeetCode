@@ -11,7 +11,8 @@ public class _0146_LRUCache {
      * Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
      *
      * get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
-     * put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
+     * put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity,
+     * it should invalidate the least recently used item before inserting a new item.
      *
      * The cache is initialized with a positive capacity.
      *
@@ -39,11 +40,37 @@ public class _0146_LRUCache {
         }
     }
 
+    private void addNode(Node node){
+        node.prev = head;
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+    }
+
+
+    private void removeNode(Node node){
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+
+    private void moveToHead(Node node){
+        removeNode(node);
+        addNode(node);
+    }
+
+    private Node popTail(){
+        Node node = tail.prev;
+        removeNode(node);
+        return node;
+    }
+
+
     private Node head = new Node(0,0);
     private Node tail = new Node(0,0);
     private Map<Integer,Node> map = new HashMap<>();
     private int capacity;
-    private int size = 0;
+    private int count = 0;
 
     public _0146_LRUCache(int capacity){
         this.capacity = capacity;
@@ -51,56 +78,30 @@ public class _0146_LRUCache {
         tail.prev = head;
     }
 
-    //insert after the head
-    private void add(Node node){
-        map.put(node.key, node);
-        Node temp = head.next;
-        head.next = node;
-        node.prev = head;
-        node.next = temp;
-        temp.prev = node;
-        size++;
-    }
-
-    //delete the node
-    private void remove(Node node){
-        map.remove(node.key);
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        size--;
-    }
-
-    private void moveToHead(Node node){
-        remove(node);
-        add(node);
-    }
-
-    private void popTail(){
-        Node node = tail.prev;
-        remove(node);
-    }
-
     public int get(int key){
         Node node = map.get(key);
-        if (node != null){
-            moveToHead(node);
-            return node.value;
-        }else{
-            return -1;
-        }
+        if (node == null) return -1;
+        moveToHead(node);
+        return node.value;
     }
 
     public void put(int key, int value){
         Node node = map.get(key);
-        if (node != null){
+        if (node == null){
+            Node newNode = new Node(key, value);
+            map.put(key, newNode);
+            addNode(newNode);
+            count++;
+            if (count > capacity){
+                Node tail = popTail();
+                map.remove(tail.key);
+                count--;
+            }
+        }else{
             node.value = value;
             moveToHead(node);
-        }else{
-            Node newNode = new Node(key,value);
-            add(newNode);
-            if (size==capacity){
-                popTail();
-            }
         }
     }
+
+
 }

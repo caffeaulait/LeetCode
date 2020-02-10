@@ -1,5 +1,8 @@
 package com.caffeaulait;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class _0494_TargetSum {
     /**
      *
@@ -25,7 +28,32 @@ public class _0494_TargetSum {
      Your output answer is guaranteed to be fitted in a 32-bit integer.
      */
 
-    public int findTargetSumWays(int[] nums, int S) {
+    //                  sum(P) - sum(N) = target
+    //sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
+    //                       2 * sum(P) = target + sum(nums)
 
+    public int findTargetSumWays(int[] nums, int S) {
+        int sum = 0;
+        for (int el : nums) sum += el;
+        if (sum < S || (sum + S)%2>0)
+            return 0;
+        else
+            return subsetSum(nums, (sum+S)/2);
     }
+
+    private int subsetSum(int[] nums, int target){
+        int[][] dp = new int[nums.length+1][target+1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= nums.length; i++){
+            for (int j = 0; j <= target; j++){
+                if (j>=nums[i-1]){
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j-nums[i-1]];
+                }else{
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        return dp[nums.length][target];
+    }
+
 }
