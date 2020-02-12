@@ -1,7 +1,5 @@
 package com.caffeaulait;
 
-import sun.misc.LRUCache;
-
 import java.util.HashMap;
 import java.util.Map;
 
