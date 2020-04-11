@@ -15,19 +15,18 @@ public class _0543_DiameterOfBinaryTree {
      *
      * Note: The length of path between two nodes is represented by the number of edges between them.
      */
-    int ans;
+    int ans = 0;
 
     public int diameterOfBinaryTree(TreeNode root) {
-        ans = 1;
         depth(root);
-        return ans - 1;
+        return ans;
     }
 
     public int depth(TreeNode node){
         if (node == null) return 0;
-        int L = depth(node.left);
-        int R = depth(node.right);
-        ans = Math.max(ans,L+R+1);
-        return Math.max(L,R)+1;
+        int left = depth(node.left);
+        int right = depth(node.right);
+        ans = Math.max(ans, left + right);
+        return Math.max(left, right) + 1;
     }
 }
