@@ -7,7 +7,7 @@ public class _0117_PopulatingNextRightPointersInEachNodeII {
      * Initially, all next pointers are set to NULL.
      */
     public Node connect(Node root) {
-
+        return root;
     }
 
     class Node {
