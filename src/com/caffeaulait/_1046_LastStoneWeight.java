@@ -3,7 +3,7 @@ package com.caffeaulait;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class _01046_LastStoneWeight {
+public class _1046_LastStoneWeight {
     /**
      * We have a collection of stones, each stone has a positive integer weight.
      *
