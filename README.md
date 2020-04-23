@@ -1,7 +1,7 @@
 # My Algorithm Practice  
 
 ## Current Progress
-253 questions solved
+256 questions solved
 
 ## Contest participated
 **Weekly Contest 183** &emsp; solved: q1  
