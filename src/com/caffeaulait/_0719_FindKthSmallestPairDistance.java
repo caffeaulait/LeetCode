@@ -17,6 +17,6 @@ public class _0719_FindKthSmallestPairDistance {
      * Then the 1st smallest distance pair is (1,1), and its distance is 0.
      */
     public int smallestDistancePair(int[] nums, int k) {
-
+        return 0;
     }
 }
