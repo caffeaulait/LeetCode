@@ -9,7 +9,7 @@ public class BiWeeklyContest24 {
      * q1 pass
      * q2 pass
      * q3 pass
-     * q3 unsolved
+     * q3 fail
      */
     public int minStartValue(int[] nums) {
         int min = 0;

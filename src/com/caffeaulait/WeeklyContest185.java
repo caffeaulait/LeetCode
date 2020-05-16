@@ -7,8 +7,8 @@ public class WeeklyContest185 {
     /**
      *  q1 pass
      *  q2 pass
-     *  q3 unsolved
-     *  q4 unsolved
+     *  q3 fail
+     *  q4 fail
      */
     public String reformat(String s) {
         List<Character> chars = new ArrayList<>();

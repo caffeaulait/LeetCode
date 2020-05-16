@@ -7,9 +7,9 @@ import java.util.List;
 public class BiWeeklyContest25 {
     /**
      * q1   pass
-     * q2   unsolved
+     * q2   fail
      * q3   pass
-     * q4   unsolved
+     * q4   fail
      */
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         List<Boolean> result = new ArrayList<>();

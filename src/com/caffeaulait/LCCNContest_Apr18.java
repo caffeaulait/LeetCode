@@ -6,9 +6,9 @@ public class LCCNContest_Apr18 {
     /**
      * q1 pass
      * q2 pass
-     * q3 TLE
-     * q4 unsolved
-     * q5 unsolved
+     * q3 fail
+     * q4 fail
+     * q5 fail
      */
     public int minCount(int[] coins) {
         int count = 0;

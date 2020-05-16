@@ -6,8 +6,8 @@ public class WeeklyContest188 {
     /**
      * q1   pass
      * q2   pass
-     * q3   unsolved
-     * q4   unsolved
+     * q3   fail
+     * q4   fail
      */
 
     public List<String> buildArray(int[] target, int n) {

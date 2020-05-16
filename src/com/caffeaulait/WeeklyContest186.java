@@ -4,10 +4,10 @@ import java.util.*;
 
 public class WeeklyContest186 {
     /**
-     *  q1 solved
-     *  q2 unsolved
-     *  q3 unsolved
-     *  q4 unsolved
+     *  q1 pass
+     *  q2 fail
+     *  q3 fail
+     *  q4 fail
      */
 
     public int maxScore(String s) {

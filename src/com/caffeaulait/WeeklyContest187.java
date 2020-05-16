@@ -7,7 +7,7 @@ public class WeeklyContest187 {
      * q1   pass
      * q2   pass
      * q3   pass
-     * q4   unsolved
+     * q4   fail
      */
     public String destCity(List<List<String>> paths) {
         Set<String> start = new HashSet<>();
