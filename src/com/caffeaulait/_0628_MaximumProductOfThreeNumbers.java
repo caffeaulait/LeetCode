@@ -3,7 +3,7 @@ package com.caffeaulait;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class MaximumProductOfThreeNumbers {
+public class _0628_MaximumProductOfThreeNumbers {
     /**
      * Given an integer array, find three numbers whose product is maximum and output the maximum product.
      *
