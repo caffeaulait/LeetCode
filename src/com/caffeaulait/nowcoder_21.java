@@ -15,7 +15,7 @@ public class nowcoder_21 {
         int index = 0;
         for (int i =0;i<pushA.length;i++){
             stack.push(pushA[i]);
-            while (!stack.isEmpty()&&stack.peek()==popA[index]){
+            while (!stack.isEmpty() && stack.peek() == popA[index]){
                 stack.pop();
                 index++;
             }
