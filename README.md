@@ -22,4 +22,6 @@
 **Weekly Contest 194** &emsp; solved: q1  
 **BiWeeklyContest 29** &emsp; solved: q1, q2, q3  
 **Weekly Contest 196** &emsp; solved: q1, q2  
-**Weekly Contest 198** &emsp; solved: q1
+**Weekly Contest 198** &emsp; solved: q1  
+**BiWeeklyContest 31** &emsp; solved: q1, q3  
+**Weekly Contest 199** &emsp; solved:  
