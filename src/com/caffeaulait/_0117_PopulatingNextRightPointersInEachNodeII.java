@@ -7,6 +7,29 @@ public class _0117_PopulatingNextRightPointersInEachNodeII {
      * Initially, all next pointers are set to NULL.
      */
     public Node connect(Node root) {
+        Node curr = root;       //current parent node
+        Node prev = null;       //previous node on the next level
+        Node start = null;      //head node on the next level
+        while (curr != null) {
+            while ( curr != null) {
+                if (curr.left != null){
+                    if (prev != null) prev.next = curr.left;
+                    else start = curr.left;
+                    prev = curr.left;
+                }
+                if (curr.right != null){
+                    if (prev != null) prev.next = curr.right;
+                    else start = curr.right;
+                    prev = curr.right;
+                }
+                //move to the next node
+                curr = curr.next;
+            }
+            //move to the next level
+            curr = start;
+            start = null;
+            prev = null;
+        }
         return root;
     }
 
