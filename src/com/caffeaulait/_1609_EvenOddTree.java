@@ -1,10 +1,7 @@
 package com.caffeaulait;
 
-import sun.dc.pr.PRError;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 public class _1609_EvenOddTree {

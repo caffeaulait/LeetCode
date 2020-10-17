@@ -2,7 +2,7 @@ package com.caffeaulait;
 
 import java.util.*;
 
-public class BiweeklyContest36 {
+public class BiWeeklyContest36 {
     /**
      * q1   pass
      * q2   pass
@@ -12,7 +12,7 @@ public class BiweeklyContest36 {
 
     int[] capacity;
 
-    public BiweeklyContest36(int big, int medium, int small) {
+    public BiWeeklyContest36(int big, int medium, int small) {
         capacity = new int[]{big, medium, small};
     }
 
