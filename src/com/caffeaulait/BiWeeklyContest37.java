@@ -1,16 +1,13 @@
 package com.caffeaulait;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class BiWeeklyContest37 {
     /**
-     * q1
-     * q2
-     * q3
-     * q4
+     * q1   pass
+     * q2   pass
+     * q3   fail
+     * q4   fail
      */
 
     public double trimMean(int[] arr) {
