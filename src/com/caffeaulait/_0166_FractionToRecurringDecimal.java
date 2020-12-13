@@ -35,6 +35,6 @@ public class _0166_FractionToRecurringDecimal {
      */
 
     public String fractionToDecimal(int numerator, int denominator) {
-
+        return null;
     }
 }
