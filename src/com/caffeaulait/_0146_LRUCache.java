@@ -1,7 +1,6 @@
 package com.caffeaulait;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class _0146_LRUCache {
     /**
@@ -38,68 +37,120 @@ public class _0146_LRUCache {
         }
     }
 
-    private void addNode(Node node){
-        node.prev = head;
-        node.next = head.next;
-        head.next.prev = node;
-        head.next = node;
+    private Node head;
+    private Node tail;
+    private Map<Integer, Node> map;
+    private int capacity;
+
+    public _0146_LRUCache(int capacity){
+        this.capacity = capacity;
+        map = new HashMap<>();
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        head.prev = null;
+        tail.prev = head;
+        tail.next = null;
     }
 
-
-    private void removeNode(Node node){
+    private void removeNode(Node node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
 
-
-    private void moveToHead(Node node){
-        removeNode(node);
-        addNode(node);
-    }
-
-    private Node popTail(){
-        Node node = tail.prev;
-        removeNode(node);
-        return node;
+    private void offerNode(Node node) {
+        node.next = head.next;
+        node.next.prev = node;
+        node.prev = head;
+        head.next = node;
     }
 
 
-    private Node head = new Node(0,0);
-    private Node tail = new Node(0,0);
-    private Map<Integer,Node> map = new HashMap<>();
-    private int capacity;
-    private int count = 0;
-
-    public _0146_LRUCache(int capacity){
-        this.capacity = capacity;
-        head.next = tail;
-        tail.prev = head;
-    }
-
-    public int get(int key){
-        Node node = map.get(key);
-        if (node == null) return -1;
-        moveToHead(node);
-        return node.value;
-    }
-
-    public void put(int key, int value){
-        Node node = map.get(key);
-        if (node == null){
-            Node newNode = new Node(key, value);
-            map.put(key, newNode);
-            addNode(newNode);
-            count++;
-            if (count > capacity){
-                Node tail = popTail();
-                map.remove(tail.key);
-                count--;
-            }
-        }else{
-            node.value = value;
-            moveToHead(node);
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            Node node = map.get(key);
+            removeNode(node);
+            offerNode(node);
+            return node.value;
+        } else {
+            return -1;
         }
     }
 
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            Node node = map.get(key);
+            node.value = value;
+            removeNode(node);
+            offerNode(node);
+        } else {
+            Node node = new Node(key, value);
+            if (map.size() == capacity) {
+                map.remove(tail.prev.key);
+                removeNode(tail.prev);
+                offerNode(node);
+            } else {
+                offerNode(node);
+            }
+            map.put(key, node);
+        }
+    }
+}
 
+class LRUCache {
+    private LinkedHashMap<Integer, Integer> map;
+    private int capacity;
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
+            protected boolean removeEldestEntry(Map.Entry eldest) {
+                return size() > capacity;
+            }
+        };
+
+    }
+    public int get(int key) {
+        return map.getOrDefault(key, -1);
+    }
+    public void put(int key, int value) {
+        map.put(key, value);
+    }
+}
+
+class LRUCache2 {
+
+    private Map<Integer, Integer> map;
+    private Queue<Integer> queue;
+    private int capacity;
+
+    public LRUCache2(int capacity) {
+        map = new HashMap<>();
+        queue = new LinkedList<>();
+        this.capacity = capacity;
+    }
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            queue.remove(key);
+            queue.offer(key);
+            return map.get(key);
+        } else {
+            return -1;
+        }
+    }
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            queue.remove(key);
+            queue.offer(key);
+            map.put(key, value);
+        } else {
+            if (map.size() == capacity) {
+                int k = queue.poll();
+                map.remove(k);
+                queue.offer(key);
+            } else {
+                queue.offer(key);
+            }
+            map.put(key, value);
+        }
+    }
 }
