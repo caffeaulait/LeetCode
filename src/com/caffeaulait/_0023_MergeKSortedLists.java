@@ -22,27 +22,12 @@ public class _0023_MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length==0)
             return null;
-
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                if (o1.val < o2.val){
-                    return -1;
-                }else if(o1.val > o2.val){
-                    return 1;
-                }else{
-                    return 0;
-                }
-            }
-        });
-
-        for (int i = 0; i<lists.length; i++){
-            queue.offer(lists[i]);
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+        for (ListNode list : lists) {
+            if (list != null) queue.offer(list);
         }
-
         ListNode head = new ListNode(0);
         ListNode curr = head;
-
         while (!queue.isEmpty()){
             curr.next = queue.poll();
             curr = curr.next;
@@ -54,7 +39,7 @@ public class _0023_MergeKSortedLists {
 
 
     public ListNode mergeKLists2(ListNode[] lists) {
-        if (lists.length==0||lists==null)
+        if (lists.length==0)
             return null;
         if (lists.length==1)
             return lists[0];

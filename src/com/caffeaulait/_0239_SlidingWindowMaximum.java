@@ -1,5 +1,7 @@
 package com.caffeaulait;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -38,6 +40,29 @@ public class _0239_SlidingWindowMaximum {
             heap.remove(nums[i]);
             heap.add(nums[j]);
             result[index] = heap.peek();
+        }
+        return result;
+    }
+
+    public int[] maxSlidingWindow2(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return new int[0];
+        }
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        int idx = 0;
+        Deque<Integer> q = new ArrayDeque<>();
+        for (int i = 0; i < nums.length; i++) {
+            while (!q.isEmpty() && q.peekFirst() < i - k + 1) {
+                q.pollFirst();
+            }
+            while (!q.isEmpty() && nums[q.peekLast()]< nums[i]) {
+                q.pollLast();
+            }
+            q.offer(i);
+            if (i >= k - 1) {
+                result[idx++] = nums[q.peekFirst()];
+            }
         }
         return result;
     }

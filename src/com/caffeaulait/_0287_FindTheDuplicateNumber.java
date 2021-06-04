@@ -29,4 +29,22 @@ public class _0287_FindTheDuplicateNumber {
         }
         return -1;
     }
+
+    public int findDuplicate2(int[] nums) {
+        if (nums.length > 0) {
+            int slow = nums[0];
+            int fast = nums[nums[0]];
+            while (slow != fast) {
+                slow = nums[slow];
+                fast = nums[nums[fast]];
+            }
+            fast = 0;
+            while (slow != fast) {
+                slow = nums[slow];
+                fast = nums[fast];
+            }
+            return slow;
+        }
+        return -1;
+    }
 }
