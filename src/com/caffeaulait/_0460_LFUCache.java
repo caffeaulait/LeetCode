@@ -24,52 +24,94 @@ public class _0460_LFUCache {
      *
      * LFUCache cache = new LFUCache( 2 /* capacity */
 
-    Map<Integer, Integer> vals;
-    Map<Integer, Integer> counts;
-    Map<Integer, LinkedHashSet<Integer>> lists;
-    int capacity;
-    int min = -1;
+    class Node {
+        int key, val, cnt;
+        Node next, prev;
+        public Node(int key, int value) {
+            this.key = key;
+            this.val = value;
+            this.cnt = 1;
+        }
+    }
+
+    class DoublyList {
+        Node head, tail;
+        int size;
+        public DoublyList() {
+            head = new Node(0, 0);
+            tail = new Node(0, 0);
+            head.next = tail;
+            tail.prev = head;
+            size = 0;
+        }
+        public void add(Node node) {
+            head.next.prev = node;
+            node.next = head.next;
+            node.prev = head;
+            head.next = node;
+            size++;
+        }
+
+        public Node remove(Node node){
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+            size--;
+            return node;
+        }
+
+    }
+
+    private int cap;
+    private int size;
+    private int min;
+    private Map<Integer, Node> nodeMap;
+    private Map<Integer, DoublyList> countMap;
 
     public _0460_LFUCache(int capacity) {
-        this.capacity = capacity;
-        this.vals = new HashMap<>();
-        this.counts = new HashMap<>();
-        this.lists = new HashMap<>();
-        this.lists.put(1, new LinkedHashSet<>());
+        cap = capacity;
+        nodeMap = new HashMap<>();
+        countMap = new HashMap<>();
     }
 
     public int get(int key) {
-        if (!vals.containsKey(key)) return -1;
-        int count = counts.get(key);
-        counts.put(key, count+1);
-        lists.get(count).remove(key);
-        if (count == min && lists.get(count).size()==0) {
-            min++;
+        Node node = nodeMap.get(key);
+        if (node == null) {
+            return -1;
         }
-        if (!lists.containsKey(count+1)) {
-            lists.put(count+1, new LinkedHashSet<>());
-        }
-        lists.get(count+1).add(key);
-        return vals.get(key);
+        update(node);
+        return node.val;
     }
 
     public void put(int key, int value) {
-        if (capacity <= 0) return;
-        if (vals.containsKey(key)) {
-            vals.put(key, value);
-            get(key); // update key's count
-            return;
+        if (cap == 0) return;
+        if (nodeMap.containsKey(key)) {
+            Node node = nodeMap.get(key);
+            node.val = value;
+            update(node);
+        }else{
+            Node node = new Node(key, value);
+            nodeMap.put(key, node);
+            if (size == cap) {
+                DoublyList list = countMap.get(min);
+                nodeMap.remove(list.remove(list.tail.prev).key);
+                size--;
+            }
+            size++;
+            min = 1;
+            DoublyList newList = countMap.getOrDefault(1, new DoublyList());
+            newList.add(node);
+            countMap.put(1, newList);
         }
-        if (vals.size() >= capacity) {
-            int evict = lists.get(min).iterator().next();
-            lists.get(min).remove(evict);
-            vals.remove(evict);
-            counts.remove(evict);
-        }
-        vals.put(key, value);
-        counts.put(key, 1);
-        min = 1;
-        lists.get(1).add(key);
+    }
+
+    public void update(Node node) {
+        DoublyList oldList = countMap.get(node.cnt);
+        oldList.remove(node);
+        if (oldList.size == 0 && node.cnt == min) min++;
+        node.cnt++;
+        DoublyList newList = countMap.getOrDefault(node.cnt, new DoublyList());
+        newList.add(node);
+        countMap.put(node.cnt, newList);
     }
 
 }

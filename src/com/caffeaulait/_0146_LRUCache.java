@@ -88,10 +88,8 @@ public class _0146_LRUCache {
             if (map.size() == capacity) {
                 map.remove(tail.prev.key);
                 removeNode(tail.prev);
-                offerNode(node);
-            } else {
-                offerNode(node);
             }
+            offerNode(node);
             map.put(key, node);
         }
     }
