@@ -33,9 +33,9 @@ public class _0207_CourseSchedule {
         boolean[][] matrix = new boolean[numCourses][numCourses];
         int[] indegree = new int[numCourses];
 
-        for (int i = 0; i < prerequisites.length; i++){
-            int next = prerequisites[i][0];
-            int prev = prerequisites[i][1];
+        for (int[] prerequisite : prerequisites) {
+            int next = prerequisite[0];
+            int prev = prerequisite[1];
             if (!matrix[prev][next]) indegree[next]++;
             matrix[prev][next] = true;
         }
