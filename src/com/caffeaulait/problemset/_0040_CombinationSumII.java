@@ -36,7 +36,7 @@ public class _0040_CombinationSumII {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
-            Arrays.sort(candidates);
+        Arrays.sort(candidates);
         backTrack(result, new ArrayList<>(), candidates, target, 0);
         return result;
     }
