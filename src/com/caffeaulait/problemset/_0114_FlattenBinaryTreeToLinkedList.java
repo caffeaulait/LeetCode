@@ -4,7 +4,7 @@ import com.caffeaulait.miscellaneous.TreeNode;
 
 import java.util.Stack;
 
-public class _0114_FlattenBinaryTreeToLinkedList {
+public class    _0114_FlattenBinaryTreeToLinkedList {
     /**
      * Given a binary tree, flatten it to a linked list in-place.
      *
