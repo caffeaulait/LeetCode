@@ -1,6 +1,6 @@
 package com.caffeaulait.problemset;
 
-import com.caffeaulait.miscellaneous.ListNode;
+import com.caffeaulait.struct.ListNode;
 
 public class _0143_ReorderList {
     /**

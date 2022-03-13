@@ -1,6 +1,6 @@
 package com.caffeaulait.contest.biweekly;
 
-import com.caffeaulait.miscellaneous.ListNode;
+import com.caffeaulait.struct.ListNode;
 
 import java.util.ArrayList;
 import java.util.List;

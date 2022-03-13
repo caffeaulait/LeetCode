@@ -1,6 +1,6 @@
 package com.caffeaulait.problemset;
 
-import com.caffeaulait.miscellaneous.TreeNode;
+import com.caffeaulait.struct.TreeNode;
 
 import java.util.Arrays;
 import java.util.LinkedList;

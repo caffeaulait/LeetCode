@@ -1,6 +1,6 @@
 package com.caffeaulait.nowcoder;
 
-import com.caffeaulait.miscellaneous.TreeNode;
+import com.caffeaulait.struct.TreeNode;
 
 public class nowcoder_18 {
     /**

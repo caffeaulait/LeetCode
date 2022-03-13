@@ -1,6 +1,6 @@
 package com.caffeaulait.problemset;
 
-import com.caffeaulait.miscellaneous.TreeNode;
+import com.caffeaulait.struct.TreeNode;
 
 public class _0222_CountCompleteTreeNodes {
     /**

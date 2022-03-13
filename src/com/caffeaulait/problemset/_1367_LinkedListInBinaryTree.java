@@ -1,7 +1,7 @@
 package com.caffeaulait.problemset;
 
-import com.caffeaulait.miscellaneous.ListNode;
-import com.caffeaulait.miscellaneous.TreeNode;
+import com.caffeaulait.struct.ListNode;
+import com.caffeaulait.struct.TreeNode;
 
 public class _1367_LinkedListInBinaryTree {
     /**

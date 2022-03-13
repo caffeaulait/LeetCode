@@ -1,6 +1,6 @@
 package com.caffeaulait.problemset;
 
-import com.caffeaulait.miscellaneous.ListNode;
+import com.caffeaulait.struct.ListNode;
 
 public class _0082_RemoveDuplicatesFromSortedListII {
     public ListNode deleteDuplicates(ListNode head) {

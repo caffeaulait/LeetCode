@@ -1,6 +1,6 @@
 package com.caffeaulait.nowcoder;
 
-import com.caffeaulait.miscellaneous.ListNode;
+import com.caffeaulait.struct.ListNode;
 
 public class nowcoder_16 {
     /**

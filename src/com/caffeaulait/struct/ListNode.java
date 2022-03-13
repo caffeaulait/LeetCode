@@ -1,4 +1,4 @@
-package com.caffeaulait.miscellaneous;
+package com.caffeaulait.struct;
 
 public class ListNode {
     public int val;
