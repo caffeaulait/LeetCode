@@ -47,16 +47,14 @@ public class _0354_RussianDollEnvelopes {
         int piles = 0;
         int[] top = new int[nums.length];
         for (int num : nums) {
-            //do not add minus to the right
-            int left = 0, right = piles;
-            //strictly smaller than
+            int left = 0, right = piles-1;
             //find left bound
-            while (left < right) {
+            while (left <= right) {
                 int mid = left + (right - left) / 2;
                 if(top[mid] < num) {
                     left = mid + 1;
                 } else {
-                    right = mid;
+                    right = mid - 1;
                 }
             }
             //find the right place to insert num

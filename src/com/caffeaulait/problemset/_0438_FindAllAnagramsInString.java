@@ -45,8 +45,6 @@ public class _0438_FindAllAnagramsInString {
         int counter = map.size();
 
         int begin = 0, end = 0;
-        int head = 0;
-        int len = Integer.MAX_VALUE;
 
 
         while(end < s.length()){
