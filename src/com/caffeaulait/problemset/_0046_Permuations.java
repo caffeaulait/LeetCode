@@ -24,22 +24,26 @@ public class _0046_Permuations {
      */
 
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        // Arrays.sort(nums); // not necessary
-        backtrack(list, new ArrayList<>(), nums);
-        return list;
+        int n = nums.length;
+        List<List<Integer>> result = new ArrayList<>();
+        if (n == 0) return result;
+        boolean[] used = new boolean[n];
+        backtrack(nums, result, new ArrayList<>(), used);
+        return result;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums){
-        if(tempList.size() == nums.length){
-            list.add(new ArrayList<>(tempList));
-        } else{
-            for(int i = 0; i < nums.length; i++){
-                if(tempList.contains(nums[i])) continue; // element already exists, skip
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums);
-                tempList.remove(tempList.size() - 1);
-            }
+    public void backtrack(int[] nums, List<List<Integer>> result, List<Integer> list, boolean[] used) {
+        if(list.size() == nums.length) {
+            result.add(new ArrayList<>(list));
+            return;
+        }
+        for(int i = 0; i < nums.length; i++) {
+            if(used[i]) continue;
+            used[i] = true;
+            list.add(nums[i]);
+            backtrack(nums, result, list, used);
+            used[i] = false;
+            list.remove(list.size()-1);
         }
     }
 
