@@ -1,6 +1,7 @@
 package com.caffeaulait.problemset;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class _0349_IntersectionOfTwoArrays {
@@ -27,6 +28,6 @@ public class _0349_IntersectionOfTwoArrays {
         for (int el : nums2) {
             if (set.contains(el)) result.add(el);
         }
-        return result.stream().filter(t -> t!=null).mapToInt(t->t).toArray();
+        return result.stream().filter(Objects::nonNull).mapToInt(t->t).toArray();
     }
 }
