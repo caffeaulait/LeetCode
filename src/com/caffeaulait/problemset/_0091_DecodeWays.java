@@ -27,8 +27,8 @@ public class _0091_DecodeWays {
         dp[0] = 1;
         dp[1] = s.charAt(0) == '0' ? 0 : 1;
         for (int i = 2; i <= n; i++){
-            int one = Integer.valueOf(s.substring(i-1, i));
-            int two = Integer.valueOf(s.substring(i-2, i));
+            int one = Integer.parseInt(s.substring(i-1, i));
+            int two = Integer.parseInt(s.substring(i-2, i));
             if (one >= 1 && one <= 9) {
                 dp[i] += dp[i-1];
             }
