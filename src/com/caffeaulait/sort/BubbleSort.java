@@ -2,7 +2,7 @@ package com.caffeaulait.sort;
 
 public class BubbleSort {
 
-    public static void bubble_sort(int[] arr){
+    public static void bubbleSort(int[] arr){
         int n = arr.length;
         for (int i = 0; i < n - 1; ++i){
             for (int j = 0; j < n - i - 1;++j){

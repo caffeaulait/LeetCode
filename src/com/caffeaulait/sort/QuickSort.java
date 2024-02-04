@@ -28,10 +28,10 @@ public class QuickSort {
         return j;
     }
 
-    public static void quick_sort(int[] arr, int left, int right){
+    public static void quickSort(int[] arr, int left, int right){
         if (left > right) return;
         int p = partition(arr,left,right);
-        quick_sort(arr,left,p-1);
-        quick_sort(arr,p+1,right);
+        quickSort(arr,left,p-1);
+        quickSort(arr,p+1,right);
     }
 }

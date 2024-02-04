@@ -41,28 +41,29 @@ public class _0150_EvaluateReversePolishNotation {
         Stack<Integer> stack = new Stack<>();
         for (String token : tokens) {
             switch (token) {
-                case "+":
+                case "+" -> {
                     snd = stack.pop();
                     fst = stack.pop();
                     stack.push(fst + snd);
-                    break;
-                case "-":
+                }
+                case "-" -> {
                     snd = stack.pop();
                     fst = stack.pop();
                     stack.push(fst - snd);
-                    break;
-                case "*":
+                }
+                case "*" -> {
                     snd = stack.pop();
                     fst = stack.pop();
-                    stack.push( fst * snd);
-                    break;
-                case "/":
+                    stack.push(fst * snd);
+                }
+                case "/" -> {
                     snd = stack.pop();
                     fst = stack.pop();
-                    stack.push( fst / snd);
-                    break;
-                default:
+                    stack.push(fst / snd);
+                }
+                default -> {
                     stack.push(Integer.parseInt(token));
+                }
             }
         }
         return stack.pop();

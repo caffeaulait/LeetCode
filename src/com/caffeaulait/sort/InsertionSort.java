@@ -2,7 +2,7 @@ package com.caffeaulait.sort;
 
 public class InsertionSort {
 
-    public static void insertion_sort(int[] arr){
+    public static void insertionSort(int[] arr){
         int n = arr.length;
         for(int i = 1;i < n;i++){
             int temp = arr[i];

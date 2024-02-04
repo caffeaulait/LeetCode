@@ -24,7 +24,7 @@ public class MergeSort {
             A[k++] = R[j++];
     }
 
-    public static void merge_sort(int[] A){
+    public static void mergeSort(int[] A){
         int n = A.length;
         if (n < 2) return;
         int mid = n/2;
@@ -32,8 +32,8 @@ public class MergeSort {
         System.arraycopy(A, 0, L, 0, mid);
         int[] R = new int[n-mid];
         if (n - mid >= 0) System.arraycopy(A, mid, R, 0, n - mid);
-        merge_sort(L);
-        merge_sort(R);
+        mergeSort(L);
+        mergeSort(R);
         merge(A,L,R);
     }
 
@@ -61,7 +61,7 @@ public class MergeSort {
     }
 
     public static List<Integer> mergeKArrays(List<List<Integer>> lists){
-        if (lists.size()==0 || lists.get(0).size()==0)
+        if (lists.isEmpty() || lists.get(0).isEmpty())
             return new ArrayList<>();
 
         PriorityQueue<List<Integer>> queue = new PriorityQueue<>(Comparator.comparing(o -> o.get(0)));
@@ -75,7 +75,7 @@ public class MergeSort {
         while (!queue.isEmpty()){
             List<Integer> minList = queue.poll();
             result.add(minList.remove(0));
-            if (minList.size()!=0)
+            if (!minList.isEmpty())
                 queue.offer(minList);
         }
 
