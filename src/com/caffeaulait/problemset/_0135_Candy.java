@@ -38,8 +38,6 @@ public class _0135_Candy {
                 candies[i] = Math.max(candies[i], candies[i+1]+1);
             }
         }
-        int sum = 0;
-        for (int candy : candies) sum+=candy;
-        return sum;
+        return Arrays.stream(candies).sum();
     }
 }
